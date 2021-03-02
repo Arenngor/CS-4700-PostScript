@@ -1,0 +1,35 @@
+(reduce.ps) run
+
+/Times-Roman findfont        % Find the font 
+14 scalefont                 % Make it a bigger font
+setfont                      % Now load the font as the current font
+
+/print-top {                
+%   160 0 moveto
+   5 string                 % Create a string of length 10 on the operand stack
+   cvs                       % Convert the top value of the stack to the string
+   show
+} def                        
+
+% move coordinates
+100 400 translate
+0 0 moveto
+
+% test code
+(Executing "0 9 2 0 {add} reduce " expecting 11, got ) show
+0 9 2 0 {add} reduce print-top
+0 -20 translate
+0 0 moveto
+count print-top
+( things left on the stack.) show
+
+0 -20 translate
+0 0 moveto
+(Executing "0 {add} reduce " expecting empty stack, got ) show
+0 {add} reduce print-top
+0 -20 translate
+0 0 moveto
+count print-top
+( things left on the stack.) show
+
+showpage

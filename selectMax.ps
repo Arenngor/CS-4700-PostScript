@@ -1,0 +1,55 @@
+%ROWAN ANTONUCCIO 
+%A02184507
+
+
+% Be sure to DOCUMENT the operator especially inputs
+% and outputs.
+/Max { %create recursive function to determine max
+	% add new dictionary to the dictionary stack
+	1 dict begin
+	
+		count 1 gt {
+			/currentMaximum exch def
+			/firstval exch def
+			
+			firstval currentMaximum gt {%keep track of most current maximum value
+				firstval
+				}
+				
+				{currentMaximum}
+			ifelse
+		Max %recruse until value is true
+			/Maxvar exch def
+			
+				firstval Maxvar gt {
+				firstval
+				firstval
+				}
+				
+				{firstval
+				Maxvar}
+		ifelse
+		}
+		if
+	end
+} def
+
+/selectMax {
+1 dict begin
+	
+		count 1 gt {
+			dup %ensure stack stays the same by duplicating it
+			
+			Max %call function to find Max
+		}
+		if
+		count 1 lt {
+		(empty stack) show % in case of empty stack, print statement
+		}
+		if
+	
+	end
+} def
+
+
+

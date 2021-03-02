@@ -1,0 +1,30 @@
+%ROWAN ANTONUCCIO 
+%A02184507
+
+
+% Be sure to DOCUMENT the operator especially inputs
+% and outputs.
+/map {
+    % add new dictionary to the dictionary stack
+    1 dict begin
+		/function exch def %gather information from test
+			count 0 gt
+			{
+				function
+				
+				/x exch def %gather value
+				/function load  %apply operation
+				
+				map %recurse
+				
+				x %replace stack value
+            % recurse down the stack
+			}
+			if
+	count 0 lt { %not sure if this will ever actually work, but I tried...
+		(empty stack) show % in case of empty stack, print statement
+		}
+		if
+    % pops the dict from the dict stack
+    end
+} def

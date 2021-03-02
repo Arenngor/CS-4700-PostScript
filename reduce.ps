@@ -1,0 +1,31 @@
+%ROWAN ANTONUCCIO 
+%A02184507
+
+
+% Be sure to DOCUMENT the operator especially inputs
+% and outputs.
+/reduce {
+	1 dict begin
+		/function exch def
+			count 3 gt { %ensure proper stack size for operation
+				%gather information from test
+				function 
+				
+				/x exch def %get first value
+				/y exch def %get second value	
+
+				/function load %perform operation
+					reduce %recurse
+				x
+				y
+				function%place value on stack
+			}
+		if
+		count 1 lt {
+		(empty stack) show % in case of empty stack, print statement
+		}
+		if
+	end
+} def %pop from dict 
+
+

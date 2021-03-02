@@ -1,0 +1,36 @@
+%ROWAN ANTONUCCIO 
+%A02184507
+
+
+% Be sure to DOCUMENT the operator especially inputs
+% and outputs.
+/fractal {
+
+	/line{0 0 moveto 0 size lineto stroke}def
+	
+		/fractaltree{line 0 size translate %begin line
+		
+		1 sub dup 0 gt %adjust stack to one lower than original
+			{gsave 27 rotate .80 dup scale%begin transformation
+			
+			fractaltree %recurse
+			
+			grestore
+		
+			-27 rotate .80 dup scale%transform other side
+			
+			fractaltree %recurse
+	}if 1 add %move stack
+	
+	gsave
+	
+	1 0 0 setrgbcolor line %I figured out how to make it have leaves, for fun I made them red but if you make it 0 1 0 it will be green!
+	grestore} bind def
+
+	/size 60 def %define size of side
+	13 fractaltree pop %order of recursion
+	
+	showpage
+	end
+} def
+

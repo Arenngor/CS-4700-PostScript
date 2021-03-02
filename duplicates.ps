@@ -1,0 +1,57 @@
+%ROWAN ANTONUCCIO 
+%A02184507
+
+
+% Be sure to DOCUMENT the operator especially inputs
+% and outputs.
+/Max { %create recursive function to determine max
+	% add new dictionary to the dictionary stack
+	1 dict begin
+
+		count 1 gt {
+			/currentVal exch def
+			/valOne exch def
+			
+			valOne currentVal eq {%keep track of most current  value
+				valOne
+				}
+									%replace duplicate value
+				{currentVal}
+			ifelse
+		Max %recruse until value is true
+			/valTwo exch def
+			
+				valOne valTwo eq {%replace duplicates
+				valOne
+				valOne
+				}
+				
+				{valOne
+				valTwo}
+		
+		ifelse
+		}
+		if
+	end
+} def	%pop
+
+/duplicates {
+	% add new dictionary to the dictionary stack
+	1 dict begin
+	
+		count 1 gt {
+			dup %ensure stack stays the same by duplicating it
+			
+			Max %call function to find Max
+			
+		}
+		if
+		count 1 lt {
+		(empty stack) show % in case of empty stack, print statement
+		}
+		if
+	
+	end
+} def
+
+%I am not sure what the issue is with this program, it somewhat works, but it is not perfect. Hopefully it's not too far off! It seems like it is stuck just finding the maximum value most of the time.
